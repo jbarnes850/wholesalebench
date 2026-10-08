@@ -1,0 +1,24 @@
+{
+  "source_id": "freshretailnet_50k",
+  "written_at": "2026-10-08T18:37:07+00:00",
+  "steps": [
+    {
+      "step": "flag_train",
+      "rule": "add flags; no rows dropped or values altered (discount==0 kept as-is: likely a missing-value code, unverified)",
+      "rows_in": 4500000,
+      "rows_out": 4500000,
+      "rows_flagged": 16073,
+      "rows_quarantined": 0,
+      "notes": ""
+    },
+    {
+      "step": "flag_eval",
+      "rule": "add flags; no rows dropped or values altered (discount==0 kept as-is: likely a missing-value code, unverified)",
+      "rows_in": 350000,
+      "rows_out": 350000,
+      "rows_flagged": 1300,
+      "rows_quarantined": 0,
+      "notes": ""
+    }
+  ]
+}

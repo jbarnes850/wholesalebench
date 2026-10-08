@@ -1,0 +1,80 @@
+{
+  "calibration": {
+    "lines_per_invoice_q10_50_90": [
+      2.0,
+      15.0,
+      47.0
+    ],
+    "customer_reorder_gap_days_q10_50_90": [
+      4.0,
+      29.0,
+      130.0
+    ],
+    "share_customers_single_invoice": 0.31,
+    "cancel_line_rate": 0.019,
+    "cancel_lag_days_linked_q10_50_90": [
+      0.95,
+      9.46,
+      68.98
+    ],
+    "qty_share_multiple_of_6": 0.29,
+    "qty_share_multiple_of_12": 0.198,
+    "share_codes_with_multiple_unit_prices": 0.88,
+    "writeoff_lines_per_1000_sales": 3.874
+  },
+  "validation": {
+    "lines_per_invoice_q10_50_90": [
+      2.0,
+      16.0,
+      52.0
+    ],
+    "customer_reorder_gap_days_q10_50_90": [
+      2.9,
+      19.9,
+      64.7
+    ],
+    "share_customers_single_invoice": 0.435,
+    "cancel_line_rate": 0.016,
+    "cancel_lag_days_linked_q10_50_90": [
+      1.02,
+      12.95,
+      133.73
+    ],
+    "qty_share_multiple_of_6": 0.281,
+    "qty_share_multiple_of_12": 0.2,
+    "share_codes_with_multiple_unit_prices": 0.803,
+    "writeoff_lines_per_1000_sales": 2.0
+  },
+  "calibration_matched_161d": {
+    "lines_per_invoice_q10_50_90": [
+      2.0,
+      15.0,
+      44.0
+    ],
+    "customer_reorder_gap_days_q10_50_90": [
+      3.1,
+      21.8,
+      69.1
+    ],
+    "share_customers_single_invoice": 0.492,
+    "cancel_line_rate": 0.018,
+    "cancel_lag_days_linked_q10_50_90": [
+      1.11,
+      9.03,
+      78.19
+    ],
+    "qty_share_multiple_of_6": 0.292,
+    "qty_share_multiple_of_12": 0.202,
+    "share_codes_with_multiple_unit_prices": 0.779,
+    "writeoff_lines_per_1000_sales": 3.725
+  },
+  "provenance": {
+    "source_id": "uci_online_retail_ii",
+    "status": "derived",
+    "domain": "giftware, mixed retail/wholesale",
+    "use": "structural analog for customer ordering cadence, basket size, pack multiples and reversal rates; NOT produce calibration",
+    "split": "calibration < 2011-07-01 <= validation",
+    "censoring": "reorder gaps and single-invoice shares depend on window length (calibration 576 days, validation 161 days); gaps crossing the split are dropped from both periods. Compare periods only on matched-length windows (see calibration_matched_161d).",
+    "cancel_lag_note": "lag between a sale and a uniquely linked cancellation (credit), not a physical return interval"
+  }
+}

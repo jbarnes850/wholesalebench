@@ -1,0 +1,42 @@
+{
+  "source_id": "uci_online_retail_ii",
+  "written_at": "2026-10-08T18:37:04+00:00",
+  "steps": [
+    {
+      "step": "flag_sheet_overlap",
+      "rule": "sheet 'Year 2010-2011' rows dated before 2010-12-10 duplicate sheet 'Year 2009-2010' (line multisets verified identical); flagged and excluded from canonical view, not deleted",
+      "rows_in": 1067371,
+      "rows_out": 1044848,
+      "rows_flagged": 22523,
+      "rows_quarantined": 0,
+      "notes": ""
+    },
+    {
+      "step": "flag_exact_repeats",
+      "rule": "identical (invoice, code, desc, qty, ts, price, customer, country) lines within the canonical view; kept (could be genuine repeated basket lines), flagged for sensitivity analysis",
+      "rows_in": 1044848,
+      "rows_out": 1044848,
+      "rows_flagged": 11812,
+      "rows_quarantined": 0,
+      "notes": ""
+    },
+    {
+      "step": "classify_lines",
+      "rule": "line_class rules in classify(); no rows dropped",
+      "rows_in": 1044848,
+      "rows_out": 1040836,
+      "rows_flagged": 0,
+      "rows_quarantined": 4012,
+      "notes": "{'sale': 1015071, 'source_overlap_duplicate': 22523, 'cancellation': 17973, 'non_product_postage': 3511, 'inventory_writeoff': 3391, 'quarantine_unpriced_inflow': 2521, 'quarantine_ambiguous_code': 1491, 'non_product_carriage': 278, 'non_product_discount': 173, 'non_product_fee': 136, 'non_product_samples': 102, 'gift_voucher': 100, 'sale_zero_price': 60, 'non_product_manual_misc': 19, 'non_product_commission': 16, 'bad_debt_adjustment': 6}"
+    },
+    {
+      "step": "link_cancellations",
+      "rule": "chronological, capacity-aware: unique earlier sale (same customer, code, price) with enough un-cancelled quantity; a link consumes that quantity",
+      "rows_in": 17973,
+      "rows_out": 17973,
+      "rows_flagged": 9638,
+      "rows_quarantined": 0,
+      "notes": "{'unlinkable_no_customer': 332, 'insufficient_remaining': 278, 'no_candidate': 2242, 'linked_unique': 9638, 'ambiguous': 5483}"
+    }
+  ]
+}

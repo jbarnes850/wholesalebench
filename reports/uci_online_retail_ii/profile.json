@@ -1,0 +1,41 @@
+{
+  "grain": "invoice line",
+  "staged_rows": 1067371,
+  "canonical_rows": 1040836,
+  "quarantined_rows": 4012,
+  "date_range": [
+    "2009-12-01 07:45:00",
+    "2011-12-09 12:50:00"
+  ],
+  "invoices": 50998,
+  "customers_known": 5881,
+  "countries": 43,
+  "product_codes": 4895,
+  "missing": {
+    "description": 2665,
+    "customer_id": 232451
+  },
+  "invoices_with_multiple_timestamps": 83,
+  "invoices_with_multiple_customers": 0,
+  "line_amount_identity": "line_amount = quantity * price (computed; source has no stored totals to reconcile against)",
+  "currency": "GBP (per UCI documentation; not stated in file)",
+  "time_semantics": "InvoiceDate = invoice creation timestamp, local UK time assumed; no shipment/payment timestamps",
+  "rare_events_by_period": [
+    {
+      "calibration": true,
+      "sales": 726055,
+      "cancellations": 13464,
+      "writeoffs": 2813,
+      "bad_debt_adjustments": 3,
+      "exact_repeat_extras": 8540
+    },
+    {
+      "calibration": false,
+      "sales": 289016,
+      "cancellations": 4509,
+      "writeoffs": 578,
+      "bad_debt_adjustments": 3,
+      "exact_repeat_extras": 3251
+    }
+  ]
+}

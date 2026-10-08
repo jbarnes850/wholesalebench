@@ -1,0 +1,42 @@
+{
+  "source_id": "usda_ams",
+  "written_at": "2026-10-08T18:37:16+00:00",
+  "steps": [
+    {
+      "step": "parse_quotes",
+      "rule": "segment commodity blocks (blank-line continuations kept); one row per price quote; package = phrase nearest the price; origin after it (else before); variety carried until package/origin changes; annotation-only prices attach to the previous quote",
+      "rows_in": 159,
+      "rows_out": 52904,
+      "rows_flagged": 0,
+      "rows_quarantined": 732,
+      "notes": "rows without package or origin are quarantined"
+    },
+    {
+      "step": "exclude_duplicate_capture_files",
+      "rule": "byte-identical Wayback files: keep earliest capture on/after market date; drop files captured before their own market date",
+      "rows_in": 159,
+      "rows_out": 157,
+      "rows_flagged": 774,
+      "rows_quarantined": 0,
+      "notes": "excluded files: ['usda_ams_wayback_bh_fv020/bh_fv020_20060824015106.txt', 'usda_ams_wayback_bh_fv020/bh_fv020_20240614195728.txt']"
+    },
+    {
+      "step": "flag_duplicate_quotes",
+      "rule": "same market/date/quote key appearing in a different file (re-captured issue); kept, flagged",
+      "rows_in": 52904,
+      "rows_out": 52904,
+      "rows_flagged": 0,
+      "rows_quarantined": 0,
+      "notes": ""
+    },
+    {
+      "step": "price_basis",
+      "rule": "per lb / each / per bin / per bunch detected from text; per-lb value derived only for per-package prices with exactly one stated outer weight",
+      "rows_in": 52904,
+      "rows_out": 52904,
+      "rows_flagged": 159,
+      "rows_quarantined": 0,
+      "notes": ""
+    }
+  ]
+}

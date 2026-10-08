@@ -4,3 +4,10 @@ __pycache__/
 .env
 *.log
 runs/
+
+# raw and derived data are large; manifests and registers are committed
+data/raw/
+data/clean/
+data/quarantine/
+data/staged/
+data/calibration/*.parquet

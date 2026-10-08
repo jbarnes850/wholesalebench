@@ -1,0 +1,69 @@
+{
+  "package": "1 1/9 bushel carton (all wrappings and carton/crate variants pooled; per-package USD)",
+  "n_quotes": 648,
+  "n_report_dates": 118,
+  "markets": [
+    "Atlanta",
+    "Baltimore",
+    "Boston",
+    "Chicago",
+    "Columbia",
+    "Detroit",
+    "Los Angeles",
+    "Miami",
+    "Philadelphia"
+  ],
+  "report_date_median_mid_usd_q10_50_90": [
+    11.0,
+    15.0,
+    24.15
+  ],
+  "by_month_median_of_date_medians": {
+    "1": 18.0,
+    "2": 15.75,
+    "3": 22.5,
+    "4": 23.5,
+    "5": 18.88,
+    "6": 13.62,
+    "7": 17.75,
+    "8": 13.88,
+    "9": 13.62,
+    "10": 15.0,
+    "11": 15.12,
+    "12": 15.0
+  },
+  "by_month_n_dates": {
+    "1": 15,
+    "2": 10,
+    "3": 6,
+    "4": 8,
+    "5": 4,
+    "6": 14,
+    "7": 6,
+    "8": 14,
+    "9": 12,
+    "10": 9,
+    "11": 10,
+    "12": 10
+  },
+  "jan_2024_cross_section_mid_usd_q10_50_90": [
+    19.6,
+    25.0,
+    32.0
+  ],
+  "lower_quality_to_standard_ratio_same_date_median": 0.75,
+  "provenance": {
+    "status": "derived",
+    "source_ids": [
+      "usda_ams_legacy_txt",
+      "usda_ams_wayback_bh_fv020"
+    ],
+    "caveats": [
+      "offering quotes, not transactions or volumes",
+      "dated snapshots, mostly Boston; not a daily series; capture dates are irregular",
+      "quality class inferred from descriptor text ('fr qual', 'poor cond', ...)",
+      "parser precision: independent hand audits, see docs/findings.md"
+    ]
+  },
+  "lower_quality_ratio_n_dates": 114
+}

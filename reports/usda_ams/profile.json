@@ -1,0 +1,174 @@
+{
+  "grain": "price quote (market x report date x commodity x package x origin x variety/descriptor)",
+  "files_parsed": 159,
+  "files_excluded_duplicate_or_misdated": 2,
+  "files_without_header_date": 0,
+  "quotes": 52904,
+  "quotes_unique": 52904,
+  "unparsed_segments": 732,
+  "parse_yield": 0.986,
+  "price_token_coverage": {
+    "tokens_in_blocks": 77331,
+    "quotes_parsed_or_quarantined": 53573,
+    "mostly_attached": 21739,
+    "mostly_orphan": 0,
+    "annotation_prices_attached": 2019,
+    "unaccounted": 0
+  },
+  "legacy_report_dates": [
+    "2024-01-03",
+    "2024-01-10"
+  ],
+  "wayback_report_dates_n": 117,
+  "wayback_report_date_range": [
+    "1999-08-18",
+    "2023-11-29"
+  ],
+  "markets": [
+    "Atlanta",
+    "Baltimore",
+    "Boston",
+    "Chicago",
+    "Columbia",
+    "Detroit",
+    "Los Angeles",
+    "Miami",
+    "New York",
+    "Philadelphia"
+  ],
+  "price_basis_counts": {
+    "USD per package": 52745,
+    "USD per lb": 131,
+    "USD per bin": 26,
+    "USD each": 2
+  },
+  "share_quotes_with_weight_derived": 0.423,
+  "share_quotes_with_range": 0.618,
+  "share_quotes_with_mostly": 0.406,
+  "top_commodities": [
+    [
+      "MUSHROOMS",
+      4295
+    ],
+    [
+      "SQUASH",
+      3393
+    ],
+    [
+      "TOMATOES",
+      2978
+    ],
+    [
+      "LETTUCE-OTHER",
+      2491
+    ],
+    [
+      "CARROTS",
+      2353
+    ],
+    [
+      "GREENS",
+      2145
+    ],
+    [
+      "SWEET POTATOES",
+      1917
+    ],
+    [
+      "CUCUMBERS",
+      1903
+    ],
+    [
+      "PEPPERS, BELL TYPE",
+      1771
+    ],
+    [
+      "PEPPERS, OTHER",
+      1684
+    ],
+    [
+      "GARLIC",
+      1524
+    ],
+    [
+      "PEPPERS OTHER",
+      1459
+    ],
+    [
+      "EGGPLANT",
+      1448
+    ],
+    [
+      "PEPPERS",
+      1415
+    ],
+    [
+      "CABBAGE",
+      1298
+    ]
+  ],
+  "eggplant_packages": [
+    [
+      "1 1/9 bushel cartons",
+      382,
+      1.0,
+      47.0
+    ],
+    [
+      "30 lb cartons",
+      181,
+      18.0,
+      68.0
+    ],
+    [
+      "5 kg/11 lb cartons",
+      174,
+      12.0,
+      45.0
+    ],
+    [
+      "35 lb cartons",
+      121,
+      20.0,
+      65.0
+    ],
+    [
+      "1 1/9 bushel cartons wrapped",
+      95,
+      8.0,
+      32.0
+    ],
+    [
+      "5 kg cartons",
+      56,
+      6.0,
+      32.0
+    ],
+    [
+      "1 1/9 bushel cartons/crates",
+      49,
+      6.0,
+      35.0
+    ],
+    [
+      "40 lb cartons",
+      49,
+      21.0,
+      65.0
+    ],
+    [
+      "1 1/9 bushel containers wrapped",
+      49,
+      1.0,
+      26.0
+    ],
+    [
+      "1 1/9 buctns/crts",
+      42,
+      6.0,
+      21.0
+    ]
+  ],
+  "precision_audit": "independent hand audits: v1 42.5% strict (40 quotes, data_review.md); v2 74.0% strict (50 quotes, Wilson 95% CI 60-84%, usda_parser_reaudit.md; price/mostly/basis/$/lb 50/50, package 45/50). This v3 revision targets the v2 error classes and has not been re-audited.",
+  "time_semantics": "report_date = market date in header ('as of'); publication time not in file; Wayback capture time is an upper bound on public availability"
+}

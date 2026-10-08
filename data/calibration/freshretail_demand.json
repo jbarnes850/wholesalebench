@@ -1,0 +1,63 @@
+{
+  "calibration_train": {
+    "n_series_days": 4500000,
+    "share_uncensored_days": 0.557,
+    "daily_cv_uncensored_q10_50_90": [
+      0.334,
+      0.485,
+      0.73
+    ],
+    "series_mean_daily_sales_q10_50_90_normalized_units": [
+      0.403,
+      0.668,
+      1.984
+    ],
+    "dow_multiplier_sun0_duckdb_dayofweek": [
+      1.202,
+      0.956,
+      0.977,
+      0.909,
+      0.872,
+      0.932,
+      1.164
+    ],
+    "promo_vs_full_price_sales_ratio_descriptive": 1.23,
+    "share_days_any_stockout_6_22": 0.443
+  },
+  "validation_eval": {
+    "n_series_days": 350000,
+    "share_uncensored_days": 0.59,
+    "daily_cv_uncensored_q10_50_90": [
+      0.211,
+      0.395,
+      0.69
+    ],
+    "series_mean_daily_sales_q10_50_90_normalized_units": [
+      0.365,
+      0.72,
+      2.2
+    ],
+    "dow_multiplier_sun0_duckdb_dayofweek": [
+      1.256,
+      0.891,
+      0.912,
+      0.935,
+      0.938,
+      0.94,
+      1.126
+    ],
+    "promo_vs_full_price_sales_ratio_descriptive": 1.085,
+    "share_days_any_stockout_6_22": 0.41
+  },
+  "provenance": {
+    "source_id": "freshretailnet_50k",
+    "status": "derived",
+    "domain": "fresh grocery retail (store-level, China), not wholesale",
+    "use": "unit-free demand-shape priors: day-to-day variability, weekday pattern, stockout incidence, promotion association. Physical scale is an explicit world assumption.",
+    "caveats": [
+      "uncensored-day selection biases means and CVs downward",
+      "promotion ratio is an association; discounts are not randomly assigned",
+      "eval split is 7 days, so weekday multipliers there rest on one week"
+    ]
+  }
+}

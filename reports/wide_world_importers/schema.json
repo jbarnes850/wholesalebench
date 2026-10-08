@@ -1,0 +1,2458 @@
+{
+  "source_id": "wide_world_importers",
+  "inspection_level": "schema only (model.xml); table rows NOT inspected",
+  "model_checksum_matches_origin": true,
+  "publisher_reported_total_rows": 4713833,
+  "tables_total": 48,
+  "tables_by_schema": {
+    "Application": 15,
+    "Purchasing": 7,
+    "Sales": 12,
+    "Warehouse": 14
+  },
+  "focus_tables": {
+    "Purchasing.PurchaseOrderLines": {
+      "columns": [
+        {
+          "name": "PurchaseOrderLineID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PurchaseOrderID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockItemID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "OrderedOuters",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "Description",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "ReceivedOuters",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PackageTypeID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ExpectedUnitPricePerOuter",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": true
+        },
+        {
+          "name": "LastReceiptDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": true
+        },
+        {
+          "name": "IsOrderLineFinalized",
+          "kind": "SqlSimpleColumn",
+          "type": "bit",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "PurchaseOrderLineID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "PackageTypeID"
+          ],
+          "references": "Warehouse.PackageTypes"
+        },
+        {
+          "columns": [
+            "PurchaseOrderID"
+          ],
+          "references": "Purchasing.PurchaseOrders"
+        },
+        {
+          "columns": [
+            "StockItemID"
+          ],
+          "references": "Warehouse.StockItems"
+        }
+      ]
+    },
+    "Purchasing.PurchaseOrders": {
+      "columns": [
+        {
+          "name": "PurchaseOrderID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "SupplierID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "OrderDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryMethodID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ContactPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ExpectedDeliveryDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": true
+        },
+        {
+          "name": "SupplierReference",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "IsOrderFinalized",
+          "kind": "SqlSimpleColumn",
+          "type": "bit",
+          "nullable": false
+        },
+        {
+          "name": "Comments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "InternalComments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "PurchaseOrderID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "ContactPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "DeliveryMethodID"
+          ],
+          "references": "Application.DeliveryMethods"
+        },
+        {
+          "columns": [
+            "SupplierID"
+          ],
+          "references": "Purchasing.Suppliers"
+        }
+      ]
+    },
+    "Purchasing.SupplierCategories": {
+      "columns": [
+        {
+          "name": "SupplierCategoryID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "SupplierCategoryName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "SupplierCategoryID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Purchasing.Suppliers": {
+      "columns": [
+        {
+          "name": "SupplierID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "SupplierName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "SupplierCategoryID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PrimaryContactPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "AlternateContactPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryMethodID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "DeliveryCityID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PostalCityID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "SupplierReference",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "BankAccountName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "BankAccountBranch",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "BankAccountCode",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "BankAccountNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "BankInternationalCode",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "PaymentDays",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "InternalComments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "PhoneNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "FaxNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "WebsiteURL",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryAddressLine1",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryAddressLine2",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "DeliveryPostalCode",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryLocation",
+          "kind": "SqlSimpleColumn",
+          "type": "sys].[geography",
+          "nullable": true
+        },
+        {
+          "name": "PostalAddressLine1",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "PostalAddressLine2",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "PostalPostalCode",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "SupplierID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "AlternateContactPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "DeliveryCityID"
+          ],
+          "references": "Application.Cities"
+        },
+        {
+          "columns": [
+            "DeliveryMethodID"
+          ],
+          "references": "Application.DeliveryMethods"
+        },
+        {
+          "columns": [
+            "PostalCityID"
+          ],
+          "references": "Application.Cities"
+        },
+        {
+          "columns": [
+            "PrimaryContactPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "SupplierCategoryID"
+          ],
+          "references": "Purchasing.SupplierCategories"
+        }
+      ]
+    },
+    "Purchasing.SupplierTransactions": {
+      "columns": [
+        {
+          "name": "SupplierTransactionID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "SupplierID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "TransactionTypeID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PurchaseOrderID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "PaymentMethodID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "SupplierInvoiceNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "TransactionDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "AmountExcludingTax",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "TaxAmount",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "TransactionAmount",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "OutstandingBalance",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "FinalizationDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": true
+        },
+        {
+          "name": "IsFinalized",
+          "kind": "SqlComputedColumn",
+          "type": null,
+          "nullable": true
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "SupplierTransactionID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "PaymentMethodID"
+          ],
+          "references": "Application.PaymentMethods"
+        },
+        {
+          "columns": [
+            "PurchaseOrderID"
+          ],
+          "references": "Purchasing.PurchaseOrders"
+        },
+        {
+          "columns": [
+            "SupplierID"
+          ],
+          "references": "Purchasing.Suppliers"
+        },
+        {
+          "columns": [
+            "TransactionTypeID"
+          ],
+          "references": "Application.TransactionTypes"
+        }
+      ]
+    },
+    "Sales.BuyingGroups": {
+      "columns": [
+        {
+          "name": "BuyingGroupID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "BuyingGroupName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "BuyingGroupID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Sales.CustomerCategories": {
+      "columns": [
+        {
+          "name": "CustomerCategoryID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "CustomerCategoryName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "CustomerCategoryID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Sales.Customers": {
+      "columns": [
+        {
+          "name": "CustomerID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "CustomerName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "BillToCustomerID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "CustomerCategoryID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "BuyingGroupID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "PrimaryContactPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "AlternateContactPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "DeliveryMethodID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryCityID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PostalCityID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "CreditLimit",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": true
+        },
+        {
+          "name": "AccountOpenedDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "StandardDiscountPercentage",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "IsStatementSent",
+          "kind": "SqlSimpleColumn",
+          "type": "bit",
+          "nullable": false
+        },
+        {
+          "name": "IsOnCreditHold",
+          "kind": "SqlSimpleColumn",
+          "type": "bit",
+          "nullable": false
+        },
+        {
+          "name": "PaymentDays",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PhoneNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "FaxNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryRun",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "RunPosition",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "WebsiteURL",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryAddressLine1",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryAddressLine2",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "DeliveryPostalCode",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryLocation",
+          "kind": "SqlSimpleColumn",
+          "type": "sys].[geography",
+          "nullable": true
+        },
+        {
+          "name": "PostalAddressLine1",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "PostalAddressLine2",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "PostalPostalCode",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "CustomerID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "AlternateContactPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "BillToCustomerID"
+          ],
+          "references": "Sales.Customers"
+        },
+        {
+          "columns": [
+            "BuyingGroupID"
+          ],
+          "references": "Sales.BuyingGroups"
+        },
+        {
+          "columns": [
+            "CustomerCategoryID"
+          ],
+          "references": "Sales.CustomerCategories"
+        },
+        {
+          "columns": [
+            "DeliveryCityID"
+          ],
+          "references": "Application.Cities"
+        },
+        {
+          "columns": [
+            "DeliveryMethodID"
+          ],
+          "references": "Application.DeliveryMethods"
+        },
+        {
+          "columns": [
+            "PostalCityID"
+          ],
+          "references": "Application.Cities"
+        },
+        {
+          "columns": [
+            "PrimaryContactPersonID"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Sales.CustomerTransactions": {
+      "columns": [
+        {
+          "name": "CustomerTransactionID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "CustomerID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "TransactionTypeID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "InvoiceID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "PaymentMethodID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "TransactionDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "AmountExcludingTax",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "TaxAmount",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "TransactionAmount",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "OutstandingBalance",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "FinalizationDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": true
+        },
+        {
+          "name": "IsFinalized",
+          "kind": "SqlComputedColumn",
+          "type": null,
+          "nullable": true
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "CustomerTransactionID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "CustomerID"
+          ],
+          "references": "Sales.Customers"
+        },
+        {
+          "columns": [
+            "InvoiceID"
+          ],
+          "references": "Sales.Invoices"
+        },
+        {
+          "columns": [
+            "PaymentMethodID"
+          ],
+          "references": "Application.PaymentMethods"
+        },
+        {
+          "columns": [
+            "TransactionTypeID"
+          ],
+          "references": "Application.TransactionTypes"
+        }
+      ]
+    },
+    "Sales.InvoiceLines": {
+      "columns": [
+        {
+          "name": "InvoiceLineID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "InvoiceID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockItemID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "Description",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "PackageTypeID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "Quantity",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "UnitPrice",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": true
+        },
+        {
+          "name": "TaxRate",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "TaxAmount",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "LineProfit",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "ExtendedPrice",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "InvoiceLineID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "InvoiceID"
+          ],
+          "references": "Sales.Invoices"
+        },
+        {
+          "columns": [
+            "PackageTypeID"
+          ],
+          "references": "Warehouse.PackageTypes"
+        },
+        {
+          "columns": [
+            "StockItemID"
+          ],
+          "references": "Warehouse.StockItems"
+        }
+      ]
+    },
+    "Sales.Invoices": {
+      "columns": [
+        {
+          "name": "InvoiceID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "CustomerID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "BillToCustomerID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "OrderID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "DeliveryMethodID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ContactPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "AccountsPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "SalespersonPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PackedByPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "InvoiceDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "CustomerPurchaseOrderNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "IsCreditNote",
+          "kind": "SqlSimpleColumn",
+          "type": "bit",
+          "nullable": false
+        },
+        {
+          "name": "CreditNoteReason",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "Comments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "DeliveryInstructions",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "InternalComments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "TotalDryItems",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "TotalChillerItems",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "DeliveryRun",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "RunPosition",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "ReturnedDeliveryData",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "ConfirmedDeliveryTime",
+          "kind": "SqlComputedColumn",
+          "type": null,
+          "nullable": true
+        },
+        {
+          "name": "ConfirmedReceivedBy",
+          "kind": "SqlComputedColumn",
+          "type": null,
+          "nullable": true
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "InvoiceID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "AccountsPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "BillToCustomerID"
+          ],
+          "references": "Sales.Customers"
+        },
+        {
+          "columns": [
+            "ContactPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "CustomerID"
+          ],
+          "references": "Sales.Customers"
+        },
+        {
+          "columns": [
+            "DeliveryMethodID"
+          ],
+          "references": "Application.DeliveryMethods"
+        },
+        {
+          "columns": [
+            "OrderID"
+          ],
+          "references": "Sales.Orders"
+        },
+        {
+          "columns": [
+            "PackedByPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "SalespersonPersonID"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Sales.OrderLines": {
+      "columns": [
+        {
+          "name": "OrderLineID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "OrderID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockItemID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "Description",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "PackageTypeID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "Quantity",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "UnitPrice",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": true
+        },
+        {
+          "name": "TaxRate",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "PickedQuantity",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PickingCompletedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": true
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "OrderLineID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "OrderID"
+          ],
+          "references": "Sales.Orders"
+        },
+        {
+          "columns": [
+            "PackageTypeID"
+          ],
+          "references": "Warehouse.PackageTypes"
+        },
+        {
+          "columns": [
+            "StockItemID"
+          ],
+          "references": "Warehouse.StockItems"
+        }
+      ]
+    },
+    "Sales.Orders": {
+      "columns": [
+        {
+          "name": "OrderID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "CustomerID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "SalespersonPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PickedByPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "ContactPersonID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "BackorderOrderID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "OrderDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "ExpectedDeliveryDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "CustomerPurchaseOrderNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "IsUndersupplyBackordered",
+          "kind": "SqlSimpleColumn",
+          "type": "bit",
+          "nullable": false
+        },
+        {
+          "name": "Comments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "DeliveryInstructions",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "InternalComments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "PickingCompletedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": true
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "OrderID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "BackorderOrderID"
+          ],
+          "references": "Sales.Orders"
+        },
+        {
+          "columns": [
+            "ContactPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "CustomerID"
+          ],
+          "references": "Sales.Customers"
+        },
+        {
+          "columns": [
+            "PickedByPersonID"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "SalespersonPersonID"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Sales.SpecialDeals": {
+      "columns": [
+        {
+          "name": "SpecialDealID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockItemID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "CustomerID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "BuyingGroupID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "CustomerCategoryID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "StockGroupID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "DealDescription",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "StartDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "EndDate",
+          "kind": "SqlSimpleColumn",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "DiscountAmount",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": true
+        },
+        {
+          "name": "DiscountPercentage",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": true
+        },
+        {
+          "name": "UnitPrice",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": true
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "SpecialDealID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "BuyingGroupID"
+          ],
+          "references": "Sales.BuyingGroups"
+        },
+        {
+          "columns": [
+            "CustomerCategoryID"
+          ],
+          "references": "Sales.CustomerCategories"
+        },
+        {
+          "columns": [
+            "CustomerID"
+          ],
+          "references": "Sales.Customers"
+        },
+        {
+          "columns": [
+            "StockGroupID"
+          ],
+          "references": "Warehouse.StockGroups"
+        },
+        {
+          "columns": [
+            "StockItemID"
+          ],
+          "references": "Warehouse.StockItems"
+        }
+      ]
+    },
+    "Warehouse.ColdRoomTemperatures": {
+      "columns": [
+        {
+          "name": "ColdRoomTemperatureID",
+          "kind": "SqlSimpleColumn",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "ColdRoomSensorNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "RecordedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "Temperature",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "ColdRoomTemperatureID"
+      ],
+      "fks": []
+    },
+    "Warehouse.Colors": {
+      "columns": [
+        {
+          "name": "ColorID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ColorName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "ColorID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Warehouse.PackageTypes": {
+      "columns": [
+        {
+          "name": "PackageTypeID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "PackageTypeName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "PackageTypeID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Warehouse.StockGroups": {
+      "columns": [
+        {
+          "name": "StockGroupID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockGroupName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "StockGroupID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        }
+      ]
+    },
+    "Warehouse.StockItemHoldings": {
+      "columns": [
+        {
+          "name": "StockItemID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "QuantityOnHand",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "BinLocation",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "LastStocktakeQuantity",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastCostPrice",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "ReorderLevel",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "TargetStockLevel",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "StockItemID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "StockItemID"
+          ],
+          "references": "Warehouse.StockItems"
+        }
+      ]
+    },
+    "Warehouse.StockItems": {
+      "columns": [
+        {
+          "name": "StockItemID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockItemName",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "SupplierID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ColorID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "UnitPackageID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "OuterPackageID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "Brand",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "Size",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "LeadTimeDays",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "QuantityPerOuter",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "IsChillerStock",
+          "kind": "SqlSimpleColumn",
+          "type": "bit",
+          "nullable": false
+        },
+        {
+          "name": "Barcode",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "TaxRate",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "UnitPrice",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "RecommendedRetailPrice",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": true
+        },
+        {
+          "name": "TypicalWeightPerUnit",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "MarketingComments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "InternalComments",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "Photo",
+          "kind": "SqlSimpleColumn",
+          "type": "varbinary",
+          "nullable": true
+        },
+        {
+          "name": "CustomFields",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "Tags",
+          "kind": "SqlComputedColumn",
+          "type": null,
+          "nullable": true
+        },
+        {
+          "name": "SearchDetails",
+          "kind": "SqlComputedColumn",
+          "type": null,
+          "nullable": true
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "ValidFrom",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "ValidTo",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "StockItemID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "ColorID"
+          ],
+          "references": "Warehouse.Colors"
+        },
+        {
+          "columns": [
+            "OuterPackageID"
+          ],
+          "references": "Warehouse.PackageTypes"
+        },
+        {
+          "columns": [
+            "SupplierID"
+          ],
+          "references": "Purchasing.Suppliers"
+        },
+        {
+          "columns": [
+            "UnitPackageID"
+          ],
+          "references": "Warehouse.PackageTypes"
+        }
+      ]
+    },
+    "Warehouse.StockItemStockGroups": {
+      "columns": [
+        {
+          "name": "StockItemStockGroupID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockItemID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockGroupID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "StockItemStockGroupID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "StockGroupID"
+          ],
+          "references": "Warehouse.StockGroups"
+        },
+        {
+          "columns": [
+            "StockItemID"
+          ],
+          "references": "Warehouse.StockItems"
+        }
+      ]
+    },
+    "Warehouse.StockItemTransactions": {
+      "columns": [
+        {
+          "name": "StockItemTransactionID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "StockItemID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "TransactionTypeID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "CustomerID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "InvoiceID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "SupplierID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "PurchaseOrderID",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": true
+        },
+        {
+          "name": "TransactionOccurredWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "Quantity",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedBy",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "LastEditedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        }
+      ],
+      "pk": [
+        "StockItemTransactionID"
+      ],
+      "fks": [
+        {
+          "columns": [
+            "LastEditedBy"
+          ],
+          "references": "Application.People"
+        },
+        {
+          "columns": [
+            "CustomerID"
+          ],
+          "references": "Sales.Customers"
+        },
+        {
+          "columns": [
+            "InvoiceID"
+          ],
+          "references": "Sales.Invoices"
+        },
+        {
+          "columns": [
+            "PurchaseOrderID"
+          ],
+          "references": "Purchasing.PurchaseOrders"
+        },
+        {
+          "columns": [
+            "StockItemID"
+          ],
+          "references": "Warehouse.StockItems"
+        },
+        {
+          "columns": [
+            "SupplierID"
+          ],
+          "references": "Purchasing.Suppliers"
+        },
+        {
+          "columns": [
+            "TransactionTypeID"
+          ],
+          "references": "Application.TransactionTypes"
+        }
+      ]
+    },
+    "Warehouse.VehicleTemperatures": {
+      "columns": [
+        {
+          "name": "VehicleTemperatureID",
+          "kind": "SqlSimpleColumn",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "VehicleRegistration",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": false
+        },
+        {
+          "name": "ChillerSensorNumber",
+          "kind": "SqlSimpleColumn",
+          "type": "int",
+          "nullable": false
+        },
+        {
+          "name": "RecordedWhen",
+          "kind": "SqlSimpleColumn",
+          "type": "datetime2",
+          "nullable": false
+        },
+        {
+          "name": "Temperature",
+          "kind": "SqlSimpleColumn",
+          "type": "decimal",
+          "nullable": false
+        },
+        {
+          "name": "IsCompressed",
+          "kind": "SqlSimpleColumn",
+          "type": "bit",
+          "nullable": false
+        },
+        {
+          "name": "FullSensorData",
+          "kind": "SqlSimpleColumn",
+          "type": "nvarchar",
+          "nullable": true
+        },
+        {
+          "name": "CompressedSensorData",
+          "kind": "SqlSimpleColumn",
+          "type": "varbinary",
+          "nullable": true
+        }
+      ],
+      "pk": [
+        "VehicleTemperatureID"
+      ],
+      "fks": []
+    }
+  }
+}
